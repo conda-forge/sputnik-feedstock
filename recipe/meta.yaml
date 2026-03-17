@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sputnik-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sputnik-{{ version }}.tar.gz
   sha256: 2a2a506a2d68383f73dc7a546957714d316e23ce558e8d9115674f899d1f1273
 
 build:
-  number: 1003
+  number: 1004
   noarch: python
   entry_points:
     - sputnik = sputnik.__main__:main
@@ -20,9 +20,9 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - semver
 
 test:
@@ -35,6 +35,7 @@ test:
   requires:
     - pip
     - pytest
+    - python {{ python_min }}
 
 about:
   home: https://github.com/explosion/sputnik
